@@ -1,7 +1,7 @@
 
 import { Routes, Route } from "react-router-dom";
 
-import RoleRoute from "../components/ROleRoute";
+import RoleRoute from "../components/RoleRoute";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 import ShopDashboard from "../pages/ShopDasboaard";
