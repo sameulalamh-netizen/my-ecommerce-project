@@ -83,12 +83,13 @@ const loginUser = async (req, res) => {
     );
 
     //store jwt in httpOnly cookie
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: false, // Set to true in production
-      sameSite: 'lax', // Adjust based on your frontend domain
-      maxAge: 3600000 // 1 hour
-    });
+    res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 3600000,
+    path: "/",
+});
 
     // Send the response with the token and user details
     res.status(200).json({
@@ -140,11 +141,12 @@ const getProfile = async (req, res) => {
 
 const logoutUser = async (req, res) => {
   try {
-    res.clearCookie('token', {
-      httpOnly: true,
-      secure: false,
-      sameSite: 'lax'
-    });
+    res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+});
 
     res.status(200).json({
       success: true,
