@@ -23,12 +23,12 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   "http://localhost:5173",
   process.env.FRONTEND_URL,
+  "https://sandbox-gw.sslcommerz.com",
 ].filter(Boolean).map((url) => url.replace(/\/$/, ""));
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow server-to-server requests, such as payment callbacks
       if (!origin) {
         return callback(null, true);
       }
@@ -43,7 +43,6 @@ app.use(
     credentials: true,
   })
 );
-  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
